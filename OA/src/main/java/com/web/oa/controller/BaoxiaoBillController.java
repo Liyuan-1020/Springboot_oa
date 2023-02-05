@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.web.oa.pojo.ActiveUser;
 import com.web.oa.pojo.BaoxiaoBill;
 import com.web.oa.service.BaoxiaoBillService;
-import com.web.oa.service.WorkFlowService;
+//import com.web.oa.service.WorkFlowService;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,8 +25,8 @@ import java.util.Map;
 public class BaoxiaoBillController {
    @Autowired
     private BaoxiaoBillService baoxiaoBillService;
-    @Autowired
-    private WorkFlowService workFlowService;
+    //@Autowired
+    //private WorkFlowService workFlowService;
     //提交报销申请的方法
     @RequestMapping("/saveStartBaoxiao")
     public String saveStartBaoxiao(BaoxiaoBill baoxiaoBill){
@@ -38,7 +38,7 @@ public class BaoxiaoBillController {
 
         baoxiaoBillService.saveBaoxiao(baoxiaoBill);
         //调用启动流程的方法
-        workFlowService.saveStartProcess(baoxiaoBill.getId(),activeUser.getUsername());
+        //workFlowService.saveStartProcess(baoxiaoBill.getId(),activeUser.getUsername());
         //调用查看流程的方法
         return "redirect:/myTaskList";
     }

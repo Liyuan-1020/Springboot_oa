@@ -1,3 +1,4 @@
+/*
 package com.web.oa.controller;
 
 import com.sun.org.apache.xpath.internal.objects.XObject;
@@ -136,13 +137,17 @@ public class WorkFlowController {
     @RequestMapping("/viewCurrentImage")
     public String viewCurrentImageByBill(String taskId,ModelMap model){
         System.out.println("/这里是taskId"+taskId+"==============================");
-        /**一：查看当前流程图*/
+        */
+/**一：查看当前流程图*//*
+
         //1：获取任务ID，获取任务对象，使用任务对象获取流程定义ID，查询流程定义对象
         ProcessDefinition pd = workFlowService
                 .findProcessDefinitionByTaskId(taskId);
         model.addAttribute("deploymentId", pd.getDeploymentId());
         model.addAttribute("imageName", pd.getDiagramResourceName());
-        /**二：查看当前活动，获取当期活动对应的坐标x,y,width,height，将4个值存放到Map<String,Object>中*/
+        */
+/**二：查看当前活动，获取当期活动对应的坐标x,y,width,height，将4个值存放到Map<String,Object>中*//*
+
         Map<String, Object> map = workFlowService.findCoordingByTask(taskId);
         model.addAttribute("acs", map);
         return "viewimage";
@@ -175,3 +180,4 @@ public class WorkFlowController {
     }
 
 }
+*/

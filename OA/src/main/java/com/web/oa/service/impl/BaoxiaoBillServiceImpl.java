@@ -7,7 +7,7 @@ import com.web.oa.mapper.BaoxiaoBillMapper;
 import com.web.oa.pojo.BaoxiaoBill;
 import com.web.oa.pojo.BaoxiaoBillExample;
 import com.web.oa.service.BaoxiaoBillService;
-import com.web.oa.service.WorkFlowService;
+//import com.web.oa.service.WorkFlowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,8 +18,8 @@ import java.util.List;
 public class BaoxiaoBillServiceImpl implements BaoxiaoBillService {
     @Autowired
     private BaoxiaoBillMapper baoxiaoBillMapper;
-    @Autowired
-    private WorkFlowService workFlowService;
+    //@Autowired
+    //private WorkFlowService workFlowService;
     //直接调用插入方法,发起报销
     Page page=null;
     @Override

@@ -7,12 +7,14 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.crypto.hash.Md5Hash;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,8 +33,10 @@ public class UserController {
 //去主页面
 	@RequestMapping("/main")
 	public String main(ModelMap model) {
-		ActiveUser activeUser = (ActiveUser) SecurityUtils.getSubject().getPrincipal();
-		model.addAttribute("activeUser", activeUser);
+		//暂时屏蔽shiro
+		Subject subject = SecurityUtils.getSubject();
+		/*ActiveUser activeUser = (ActiveUser) SecurityUtils.getSubject().getPrincipal();
+		model.addAttribute("activeUser", activeUser);*/
 		return "index";
 
 	}
@@ -40,7 +44,7 @@ public class UserController {
 	@RequestMapping("/login")
 	public String login(HttpServletRequest request, Model model){
 		String exceptionName = (String) request.getAttribute("shiroLoginFailure");
-		if (exceptionName != null) {
+		/*if (exceptionName != null) {
 			if (UnknownAccountException.class.getName().equals(exceptionName)) {
 				model.addAttribute("errorMsg", "用户账号不存在");
 			} else if (IncorrectCredentialsException.class.getName().equals(exceptionName)) {
@@ -50,8 +54,20 @@ public class UserController {
 			}else {
 				model.addAttribute("errorMsg", "未知错误");
 			}
+		}*/
+		if (UnknownAccountException.class.getName().equals(exceptionName)) {
+			model.addAttribute("errorMsg", "用户账号不存在");
+		} else if (IncorrectCredentialsException.class.getName().equals(exceptionName)) {
+			model.addAttribute("errorMsg", "密码不正确");
+		} else if("randomcodeError".equals(exceptionName)) {
+			model.addAttribute("errorMsg", "验证码不正确");
+		}else {
+			model.addAttribute("errorMsg", "未知错误");
 		}
-		return "login";
+		//暂时屏蔽shiro
+		String info="index";
+
+		return "index";
 	}
 	//查看角色的方法
 	@RequestMapping("/findRoles")

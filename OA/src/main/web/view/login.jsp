@@ -43,14 +43,14 @@
 						</div>
 					</div>
 
-					<div class="form-group">
+					<%--<div class="form-group">
 						<div class="col-sm-10">
 							<input type="text" name="yzm" class="form-control" id="yzm"
 								   placeholder="请输入验证码" >
 							<img src="${pageContext.request.contextPath}/yzms" alt="" >
 							<a href="" id="img1">看不清楚</a>
 						</div>
-					</div>
+					</div>--%>
 					<div class="form-group">
 						 
 						<div class="main-checkbox">

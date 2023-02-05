@@ -1,3 +1,4 @@
+/*
 package com.web.oa.utils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +24,9 @@ public class ManagerTaskHandlerr implements TaskListener {
 		WebApplicationContext context =ContextLoader.getCurrentWebApplicationContext();
 		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
 		
-		/**从新查询当前用户，再获取当前用户对应的领导*/
+		*/
+/**从新查询当前用户，再获取当前用户对应的领导*//*
+
 		ActiveUser activeUser = (ActiveUser) SecurityUtils.getSubject().getPrincipal();
 		
 		EmployeeService employeeService = (EmployeeService) context.getBean("employeeService");
@@ -36,3 +39,4 @@ public class ManagerTaskHandlerr implements TaskListener {
 	}
 
 }
+*/
